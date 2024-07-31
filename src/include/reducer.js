@@ -26,9 +26,6 @@ export const initState = {
 
 // Reducer
 const reducer = (state, action) => {
-	console.group('Action: ', action)
-	console.log('PrevState: ', state)
-
 	let newState
 
 	switch (action.type) {
@@ -118,9 +115,6 @@ const reducer = (state, action) => {
 		default:
 			throw new Error('Invalid value action')
 	}
-
-	console.log('NewState: ', newState)
-	console.groupEnd()
 
 	storage.set(newState.jobs)
 	return newState

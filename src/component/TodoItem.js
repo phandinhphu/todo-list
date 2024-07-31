@@ -6,8 +6,6 @@ function TodoItem({ index, todo, dispatch, editIndex }) {
     const [isSubmited, setIsSubmited] = useState(false)
     const [input, setInput] = useState(todo.title)
 
-    console.log(input)
-
     const handleOnKeyUp = (payload) => {
         dispatch(endEditJob(payload))
         setIsSubmited(true)
