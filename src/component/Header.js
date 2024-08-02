@@ -1,7 +1,11 @@
 import { useRef } from "react"
 import { addJob, setJob } from "../include/action"
+import { useStore } from "../include/hooks"
 
-function Header({ job, dispatch }) {
+
+function Header() {
+
+    const [{ job }, dispatch] = useStore()
     const inputRef = useRef()
 
     const handleSubmit = (payload) => {

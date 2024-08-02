@@ -1,10 +1,12 @@
 import { useState } from "react"
 import { deleteJob, toggleJob, editJob, endEditJob } from "../include/action"
+import { useStore } from "../include"
 
-function TodoItem({ index, todo, dispatch, editIndex }) {
+function TodoItem({ index, todo }) {
 
     const [isSubmited, setIsSubmited] = useState(false)
     const [input, setInput] = useState(todo.title)
+    const [{ editIndex }, dispatch] = useStore()
 
     const handleOnKeyUp = (payload) => {
         dispatch(endEditJob(payload))

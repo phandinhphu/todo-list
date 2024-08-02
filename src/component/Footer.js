@@ -1,14 +1,20 @@
+import { useStore } from "../include";
 import { clearCompletdJob, switchFilter } from "../include/action";
 
-function Footer({ todos, dispatch, filter, filters }) {
+function Footer() {
+
+	const [{ jobs, filter, filters }, dispatch] = useStore()
+
 	return (
 		<footer className="footer">
 			<span className="todo-count">
-				<strong>{todos.filter(todo => todo.completed).length}</strong> item left
+				<strong>{jobs.filter(todo => todo.completed).length}</strong> item left
 			</span>
 			<ul className="filters">
 				{Object.keys(filters).map(type => (
-					<li>
+					<li
+					    key={type}
+					>
 						<a
 							className={filter === type ? "selected" : undefined}
 							href="http://localhost:3000/#"
@@ -20,7 +26,7 @@ function Footer({ todos, dispatch, filter, filters }) {
 				))}
 			</ul>
 
-			{todos.filter(todo => todo.completed).length > 0 && (
+			{jobs.filter(todo => todo.completed).length > 0 && (
 				<button
 					className="clear-completed"
 					onClick={() => dispatch(clearCompletdJob())}

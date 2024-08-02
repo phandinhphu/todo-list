@@ -1,7 +1,10 @@
 import { toggleAll } from "../include/action.js";
+import { useStore } from "../include/hooks.js";
 import TodoItem from "./TodoItem.js";
 
-function TodoList({ todoList, dispatch, editIndex, filter, filters }) {
+function TodoList() {
+
+    const [{ jobs, filter, filters }, dispatch] = useStore()
 
     return (
         <section className="main">
@@ -13,13 +16,11 @@ function TodoList({ todoList, dispatch, editIndex, filter, filters }) {
             />
             <label htmlFor="toggle-all">Mark all as complete</label>
             <ul className="todo-list">
-                {todoList.filter(filters[filter]).map((todo, index) => (
+                {jobs.filter(filters[filter]).map((todo, index) => (
                     <TodoItem
                         index={index}
                         key={todo.title}
                         todo={todo}
-                        dispatch={dispatch}   
-                        editIndex={editIndex} 
                     />
                 ))}
             </ul>
